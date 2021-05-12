@@ -3,6 +3,11 @@ import { ACTION_TYPE, IAction, IState, ITodoItem } from "./typing";
 function todoReducer(state: IState, action: IAction): IState {
   const { type, payload } = action
   switch (type) {
+    case ACTION_TYPE.INIT_TODOLIST:
+      return {
+        ...state,
+        todoList: payload as ITodoItem[]
+      }
     case ACTION_TYPE.ADD_TODO:
       return {
         ...state,
@@ -24,6 +29,7 @@ function todoReducer(state: IState, action: IAction): IState {
           }
         })
       }
+
     default:
       return state
   }
